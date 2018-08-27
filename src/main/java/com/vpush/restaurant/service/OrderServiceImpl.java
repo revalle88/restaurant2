@@ -1,17 +1,40 @@
 package com.vpush.restaurant.service;
 
-import com.vpush.restaurant.domain.Order;
-import com.vpush.restaurant.repository.OrderRepository;
+import com.vpush.restaurant.domain.Bid;
+import com.vpush.restaurant.repository.BidRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by admin on 27.08.2018.
  */
+@Service
 public class OrderServiceImpl implements OrderService{
-    private OrderRepository orderRepository;
+    @Autowired
+    private BidRepository bidRepository;
 
-   /* public Order completeOrder(Long id){
-        Order order = orderRepository.findOne(id);
+   /* public Bid completeOrder(Long id){
+        Bid order = orderRepository.findOne(id);
         return order;
     }
 */
+    @Override
+   public List<Bid> findBuyStatus(){
+       return bidRepository.findAll();
+   }
+    @Override
+    public List<Bid> findAllBids(){
+        return bidRepository.findAll();
+    }
+
+  /*  public void setStatusComplete(Long id){
+        Optional<Bid> bid = bidRepository.findById(id);
+
+       bid.setStatus();
+
+    }*/
+
 }

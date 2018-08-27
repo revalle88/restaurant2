@@ -4,7 +4,7 @@ databaseChangeLog:
       author: postgres
       changes:
         - createTable:
-            tableName: myorder
+            tableName: bid
             columns:
               - column:
                   name: id

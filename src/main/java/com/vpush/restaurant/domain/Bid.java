@@ -6,8 +6,8 @@ import javax.persistence.*;
  * Created by admin on 27.08.2018.
  */
 @Entity
-@Table(name = "myorder")
-public class Order {
+@Table(name = "bid")
+public class Bid {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
