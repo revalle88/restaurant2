@@ -29,12 +29,13 @@ public class OrderServiceImpl implements OrderService{
     public List<Bid> findAllBids(){
         return bidRepository.findAll();
     }
-
-  /*  public void setStatusComplete(Long id){
+    @Override
+    public void setStatusComplete(Long id){
         Optional<Bid> bid = bidRepository.findById(id);
+        Bid bid1 = bid.get();
+      bid1.setStatus("complete");
+       bidRepository.save(bid1);
 
-       bid.setStatus();
-
-    }*/
+    }
 
 }

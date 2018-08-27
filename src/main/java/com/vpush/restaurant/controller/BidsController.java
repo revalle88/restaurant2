@@ -34,7 +34,8 @@ public class BidsController {
     @GetMapping("/buyorders")
     public List<Bid> getBuyProducts() {
        // return bidRepository.getBuyOrders();
-        return orderService.findBuyStatus();
+       // return orderService.findBuyStatus();
+        return bidRepository.findByStatus("buy");
     }
 
     @CrossOrigin
@@ -57,8 +58,8 @@ public class BidsController {
     //TODO
     @PostMapping("/orders/buy")
     public String buyBid(@RequestParam("id") Long id) {
-
-        bidRepository.setStatusForBid("complete", id);
+        orderService.setStatusComplete(id);
+       // bidRepository.setStatusForBid("complete", id);
         return "OK";
     }
 

@@ -20,4 +20,6 @@ public interface BidRepository extends JpaRepository<Bid, Long> {
     int setStatusForBid(@Param("status") String status, @Param("id") Long id);
     //List<Bid> getByStatus();
 
+    List<Bid> findByStatus(String status);
+
 }
