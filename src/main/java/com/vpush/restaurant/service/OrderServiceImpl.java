@@ -37,5 +37,10 @@ public class OrderServiceImpl implements OrderService{
        bidRepository.save(bid1);
 
     }
+    @Override
+    public List<Bid> getByStatus(String status){
+
+       return bidRepository.findByStatus(status);
+    }
 
 }

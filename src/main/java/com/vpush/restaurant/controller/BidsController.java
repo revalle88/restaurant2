@@ -27,21 +27,23 @@ public class BidsController {
 
     // Get All Orders
     @GetMapping("/orders")
-    public List<Bid> getAllProducts() {
-        return bidRepository.findAll();
+    public List<Bid> getAllBids() {
+        return orderService.findAllBids();
     }
 
     @GetMapping("/buyorders")
     public List<Bid> getBuyProducts() {
        // return bidRepository.getBuyOrders();
        // return orderService.findBuyStatus();
-        return bidRepository.findByStatus("buy");
+       // return bidRepository.findByStatus("buy");
+        return orderService.getByStatus("buy");
     }
 
     @GetMapping("/storeorders")
     public List<Bid> getStoreOrders() {
 
-        return bidRepository.findByStatus("new");
+        //return bidRepository.findByStatus("new");
+        return orderService.getByStatus("new");
     }
 
     @CrossOrigin
