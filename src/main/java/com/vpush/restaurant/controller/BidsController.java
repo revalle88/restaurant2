@@ -38,6 +38,12 @@ public class BidsController {
         return bidRepository.findByStatus("buy");
     }
 
+    @GetMapping("/storeorders")
+    public List<Bid> getStoreOrders() {
+
+        return bidRepository.findByStatus("new");
+    }
+
     @CrossOrigin
     @PostMapping("/orders")
     public Bid createBid(@RequestBody Bid bid) {
