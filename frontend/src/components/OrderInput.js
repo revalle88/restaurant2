@@ -66,10 +66,10 @@ export default class OrderInput extends React.Component{
 		return(
 
 			<form>
-			<input onChange={this.handleIdChange.bind(this)} type="text" name="id" placeholder="Enter Id" />
-     		<input onChange={this.handleNameChange.bind(this)} type="text" name="name" placeholder="Enter name here" />
-     		<input onChange={this.handleDescriptionChange.bind(this)} type="text" name="description" placeholder="Enter Description here" />
-     		<input onChange={this.handleBuyChange.bind(this)} type="checkbox" name="buy" placeholder="buy" value = "buy" />
+
+     		<input onChange={this.handleNameChange.bind(this)} type="text" name="name" placeholder="Enter order title here" />
+     		<input onChange={this.handleDescriptionChange.bind(this)} type="text" name="description" placeholder="Enter Products Requirements" />
+     		need to buy: <input onChange={this.handleBuyChange.bind(this)} type="checkbox" name="buy" placeholder="buy" value = "buy" />
      		<button onClick={this.handleSubmit.bind(this)}>Submit</button>
 
    			</form>

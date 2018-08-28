@@ -45,16 +45,18 @@ async remove(id) {
 
     return (
       <div>
-      
+      Order List:
        <table>
+           <tr><th>ID</th><th>title</th><th>Product Requirements</th><th>STATUS</th></tr>
                {orders.map(order =>
-            <div key={order.id}><tr>
+            <tr>
                 <td>{order.id}</td>
                 <td>{order.name}</td>
                 <td>{order.description}</td>
                 <td>{order.status}</td>
-                <td> <button size="sm" color="danger" onClick={() => this.remove(order.id)}>Delete</button></td></tr>
-            </div>
+                <td> <button size="sm" color="danger" onClick={() => this.remove(order.id)}>Delete</button></td>
+            </tr>
+
 
              
           )}

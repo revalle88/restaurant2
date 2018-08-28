@@ -33,32 +33,24 @@ public class BidsController {
 
     @GetMapping("/buyorders")
     public List<Bid> getBuyProducts() {
-       // return bidRepository.getBuyOrders();
-       // return orderService.findBuyStatus();
-       // return bidRepository.findByStatus("buy");
-        return orderService.getByStatus("buy");
+         return orderService.getByStatus("buy");
     }
 
     @GetMapping("/storeorders")
     public List<Bid> getStoreOrders() {
-
-        //return bidRepository.findByStatus("new");
         return orderService.getByStatus("new");
     }
 
-    @CrossOrigin
+
     @PostMapping("/orders")
     public Bid createBid(@RequestBody Bid bid) {
         System.out.println(bid.getName());
-       // System.out.println(order.getStatus());
-        Product product = new Product();
-        return bidRepository.save(bid);
+         return bidRepository.save(bid);
     }
 
-    @CrossOrigin
+
     @DeleteMapping("/orders/{id}")
     public String deleteBid(@PathVariable Long id) {
-
         bidRepository.deleteById(id);
         return "OK";
     }
@@ -67,22 +59,18 @@ public class BidsController {
     @PostMapping("/orders/buy")
     public String buyBid(@RequestParam("id") Long id) {
         orderService.setStatusNew(id);
-       // bidRepository.setStatusForBid("complete", id);
-        return "OK";
+         return "OK";
     }
 
     @PostMapping("/orders/send")
     public String sendBid(@RequestParam("id") Long id) {
         orderService.setStatusComplete(id);
-        // bidRepository.setStatusForBid("complete", id);
         return "OK";
     }
 
-    @CrossOrigin
+
     @PostMapping("/products")
     public Product createProduct(@RequestBody Product product) {
-
-        //Product product = new Product();
         return productRepository.save(product);
     }
 

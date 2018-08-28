@@ -24,17 +24,6 @@ class StorageList extends Component {
   }
 
 
-async remove(id) {
-    await fetch('http://localhost:8080/api/orders/'+id, {
-      method: 'DELETE',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-    }).then(this.refreshList)
-  }
-
-
 async completeOrder(id){
 
 var details = {
@@ -45,20 +34,16 @@ var formBody = [];
 formBody.push("id="+id)
 
 
-fetch('http://localhost:8080/api/orders/send', {
+await fetch('http://localhost:8080/api/orders/send', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
   },
   body: formBody
-})
-
-
+}).then(this.refreshList)
 
 
 }
-
-
 
 
   render() {
@@ -69,19 +54,27 @@ fetch('http://localhost:8080/api/orders/send', {
     }
 
     return (
-      <div>
-      
-       
-               {orders.map(order =>
-            <div key={order.id}>
-             {order.id}
-              {order.name}
-              <button size="sm" color="danger" onClick={() => this.completeOrder(order.id)}>Send to Kitchen</button>
-            </div>
-             
-          )}
-       
-      </div>
+
+    <div>
+        Products, ordered from Storage:
+        <table>
+            <tr><th>ID</th><th>title</th><th>Product Requirements</th><th>STATUS</th></tr>
+            {orders.map(order =>
+                <tr>
+                    <td>{order.id}</td>
+                    <td>{order.name}</td>
+                    <td>{order.description}</td>
+                    <td>{order.status}</td>
+                    <td> <button size="sm" color="danger" onClick={() => this.completeOrder(order.id)}>Send to Kitchen</button></td>
+                </tr>
+
+
+
+            )}
+        </table>
+
+    </div>
+
     );
   }
 }

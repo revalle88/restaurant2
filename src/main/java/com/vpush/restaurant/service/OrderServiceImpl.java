@@ -16,28 +16,24 @@ import java.util.Optional;
 public class OrderServiceImpl implements OrderService{
     @Autowired
     private BidRepository bidRepository;
-
-   /* public Bid completeOrder(Long id){
-        Bid order = orderRepository.findOne(id);
-        return order;
-    }
-*/
     @Override
-   public List<Bid> findBuyStatus(){
+    public List<Bid> findBuyStatus(){
        return bidRepository.findAll();
    }
     @Override
     public List<Bid> findAllBids(){
         return bidRepository.findAll();
     }
+
     @Transactional
     @Override
     public void setStatusComplete(Long id){
         Optional<Bid> bid = bidRepository.findById(id);
         Bid bid1 = bid.get();
-      bid1.setStatus("complete");
-       bidRepository.save(bid1);
+        bid1.setStatus("complete");
+        bidRepository.save(bid1);
     }
+
     @Transactional
     @Override
     public void setStatusNew(Long id){
@@ -47,11 +43,8 @@ public class OrderServiceImpl implements OrderService{
         bidRepository.save(bid1);
     }
 
-
-
     @Override
     public List<Bid> getByStatus(String status){
-
        return bidRepository.findByStatus(status);
     }
 

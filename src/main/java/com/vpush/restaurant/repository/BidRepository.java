@@ -18,7 +18,6 @@ public interface BidRepository extends JpaRepository<Bid, Long> {
     @Modifying
     @Query("update Bid bid set bid.status = :status where bid.id = :id")
     int setStatusForBid(@Param("status") String status, @Param("id") Long id);
-    //List<Bid> getByStatus();
 
     List<Bid> findByStatus(String status);
 
