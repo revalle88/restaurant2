@@ -35,8 +35,17 @@ public class OrderServiceImpl implements OrderService{
         Bid bid1 = bid.get();
       bid1.setStatus("complete");
        bidRepository.save(bid1);
-
     }
+    @Override
+    public void setStatusNew(Long id){
+        Optional<Bid> bid = bidRepository.findById(id);
+        Bid bid1 = bid.get();
+        bid1.setStatus("new");
+        bidRepository.save(bid1);
+    }
+
+
+
     @Override
     public List<Bid> getByStatus(String status){
 

@@ -13,5 +13,6 @@ public interface OrderService {
     public List<Bid> findAllBids();
     public List<Bid> findBuyStatus();
     public void setStatusComplete(Long id);
+    public void setStatusNew(Long id);
     public List<Bid> getByStatus(String status);
 }

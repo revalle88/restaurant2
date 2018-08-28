@@ -66,8 +66,15 @@ public class BidsController {
     //TODO
     @PostMapping("/orders/buy")
     public String buyBid(@RequestParam("id") Long id) {
-        orderService.setStatusComplete(id);
+        orderService.setStatusNew(id);
        // bidRepository.setStatusForBid("complete", id);
+        return "OK";
+    }
+
+    @PostMapping("/orders/send")
+    public String sendBid(@RequestParam("id") Long id) {
+        orderService.setStatusComplete(id);
+        // bidRepository.setStatusForBid("complete", id);
         return "OK";
     }
 
