@@ -5,6 +5,7 @@ import com.vpush.restaurant.repository.BidRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,6 +30,7 @@ public class OrderServiceImpl implements OrderService{
     public List<Bid> findAllBids(){
         return bidRepository.findAll();
     }
+    @Transactional
     @Override
     public void setStatusComplete(Long id){
         Optional<Bid> bid = bidRepository.findById(id);
@@ -36,6 +38,7 @@ public class OrderServiceImpl implements OrderService{
       bid1.setStatus("complete");
        bidRepository.save(bid1);
     }
+    @Transactional
     @Override
     public void setStatusNew(Long id){
         Optional<Bid> bid = bidRepository.findById(id);
