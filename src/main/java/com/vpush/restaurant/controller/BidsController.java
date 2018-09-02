@@ -50,22 +50,22 @@ public class BidsController {
 
 
     @DeleteMapping("/orders/{id}")
-    public String deleteBid(@PathVariable Long id) {
+    public void deleteBid(@PathVariable Long id) {
         bidRepository.deleteById(id);
-        return "OK";
+
     }
 
     //TODO
     @PostMapping("/orders/buy")
-    public String buyBid(@RequestParam("id") Long id) {
+    public void buyBid(@RequestParam("id") Long id) {
         orderService.setStatusNew(id);
-         return "OK";
+
     }
 
     @PostMapping("/orders/send")
-    public String sendBid(@RequestParam("id") Long id) {
+    public void sendBid(@RequestParam("id") Long id) {
         orderService.setStatusComplete(id);
-        return "OK";
+
     }
 
 
